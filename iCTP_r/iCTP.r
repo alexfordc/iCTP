@@ -2,55 +2,55 @@ library("Rcpp")#加载RCpp 调用c++ 方法
 library("hash")#加载hash, 返回hash表结构数据
 sourceCpp("iCTP.cpp")
 
-lordMT.askClose <- function(ctpID, requestID, code, price, qty, timeCondition, orderRef)
+iCTP.askClose <- function(ctpID, requestID, code, exchangeID, price, qty, timeCondition, orderRef)
 {
-  return(askClose(ctpID, requestID, code, price, qty, timeCondition, orderRef))
+  return(askClose(ctpID, requestID, code, exchangeID, price, qty, timeCondition, orderRef))
 }
 
-lordMT.askCloseToday <- function(ctpID, requestID, code, price, qty, timeCondition, orderRef)
+iCTP.askCloseToday <- function(ctpID, requestID, code, exchangeID, price, qty, timeCondition, orderRef)
 {
-  return(askCloseToday(ctpID, requestID, code, price, qty, timeCondition, orderRef))
+  return(askCloseToday(ctpID, requestID, code, exchangeID, price, qty, timeCondition, orderRef))
 }
 
-lordMT.askOpen <- function(ctpID, requestID, code, price, qty, timeCondition, orderRef)
+iCTP.askOpen <- function(ctpID, requestID, code, exchangeID, price, qty, timeCondition, orderRef)
 {
-  return(askOpen(ctpID, requestID, code, price, qty, timeCondition, orderRef))
+  return(askOpen(ctpID, requestID, code, exchangeID, price, qty, timeCondition, orderRef))
 }
 
-lordMT.bidClose <- function(ctpID, requestID, code, price, qty, timeCondition, orderRef)
+iCTP.bidClose <- function(ctpID, requestID, code, exchangeID, price, qty, timeCondition, orderRef)
 {
-  return(bidClose(ctpID, requestID, code, price, qty, timeCondition, orderRef))
+  return(bidClose(ctpID, requestID, code, exchangeID, price, qty, timeCondition, orderRef))
 }
 
-lordMT.bidCloseToday <- function(ctpID, requestID, code, price, qty, timeCondition, orderRef)
+iCTP.bidCloseToday <- function(ctpID, requestID, code, exchangeID, price, qty, timeCondition, orderRef)
 {
-  return(bidCloseToday(ctpID, requestID, code, price, qty, timeCondition, orderRef))
+  return(bidCloseToday(ctpID, requestID, code, exchangeID, price, qty, timeCondition, orderRef))
 }
 
-lordMT.bidOpen <- function(ctpID, requestID, code, price, qty, timeCondition, orderRef)
+iCTP.bidOpen <- function(ctpID, requestID, code, exchangeID, price, qty, timeCondition, orderRef)
 {
-  return(bidOpen(ctpID, requestID, code, price, qty, timeCondition, orderRef))
+  return(bidOpen(ctpID, requestID, code, exchangeID, price, qty, timeCondition, orderRef))
 }
 
-lordMT.cancelOrder <- function(ctpID, requestID, exchangeID, orderSysID, orderRef)
+iCTP.cancelOrder <- function(ctpID, requestID, exchangeID, orderSysID, orderRef)
 {
   return(cancelOrder(ctpID, requestID, exchangeID, orderSysID, orderRef))
 }
 
 #登录成功后创建
-lordMT.create <- function()
+iCTP.create <- function()
 {
   create()
 }
 
 ##GenerateReqID
-lordMT.generateReqID <- function(ctpID)
+iCTP.generateReqID <- function(ctpID)
 {
   return(generateReqID(ctpID))
 }
 
 #TODO
-lordMT.getAccountData <- function(ctpID)
+iCTP.getAccountData <- function(ctpID)
 {
   cppResult <- getAccountData(ctpID)
   if(cppResult == "")
@@ -112,12 +112,12 @@ lordMT.getAccountData <- function(ctpID)
   }
 }
 
-lordMT.getBrokerID <- function(ctpID)
+iCTP.getBrokerID <- function(ctpID)
 {
   return(GetBrokerID(ctpID))
 }
 
-lordMT.getCommissionRate <- function(ctpID, code)
+iCTP.getCommissionRate <- function(ctpID, code)
 {
 	cppResult <- GetCommissionRate(ctpID, code)
 	if(cppResult == "")
@@ -138,7 +138,7 @@ lordMT.getCommissionRate <- function(ctpID, code)
 	return(hash(keys = rowNames, values = localIst)) 
 }
 
-lordMT.getDepthMarketData <- function(ctpID)
+iCTP.getDepthMarketData <- function(ctpID)
 {
   cppResult <- getDepthMarketData(ctpID)
   if(cppResult == "")
@@ -197,7 +197,7 @@ lordMT.getDepthMarketData <- function(ctpID)
 }
 
 #TODO
-lordMT.getInstrumentsData <- function(ctpID)
+iCTP.getInstrumentsData <- function(ctpID)
 {
   temp <- getInstrumentsData(ctpID)
   if(cppResult == "")
@@ -242,13 +242,13 @@ lordMT.getInstrumentsData <- function(ctpID)
   }
 }
 
-lordMT.getInvestorID <- function(ctpID)
+iCTP.getInvestorID <- function(ctpID)
 {
   return(getInvestorID(ctpID))
 }
 
 #TODO
-lordMT.getMarginRate <- function(ctpID, code)
+iCTP.getMarginRate <- function(ctpID, code)
 {
   temp <- getMarginRate(ctpID, code)
   if(cppResult == "")
@@ -272,7 +272,7 @@ lordMT.getMarginRate <- function(ctpID, code)
 }
 
 #TODO
-lordMT.getPositionData <- function(ctpID)
+iCTP.getPositionData <- function(ctpID)
 {
   temp <- getPositionData(ctpID)
   if(cppResult == "")
@@ -331,7 +331,7 @@ lordMT.getPositionData <- function(ctpID)
 }
 
 #TODO
-lordMT.getPositionDetailData <- function(ctpID)
+iCTP.getPositionDetailData <- function(ctpID)
 {
   temp <- getPositionDetailData(ctpID)
   if(cppResult == "")
@@ -372,7 +372,7 @@ lordMT.getPositionDetailData <- function(ctpID)
 }
 
 #TODO
-lordMT.getOrderInfo <- function(ctpID)
+iCTP.getOrderInfo <- function(ctpID)
 {
   temp <- getOrderInfo(ctpID)
   if(cppResult == "")
@@ -444,26 +444,26 @@ lordMT.getOrderInfo <- function(ctpID)
 }
 
 #TODO
-lordMT.getOrderInfos <- function(ctpID)
+iCTP.getOrderInfos <- function(ctpID)
 {
   temp <- getOrderInfos(ctpID)
   return(temp)
 }
 
-lordMT.getPassword <- function(ctpID)
+iCTP.getPassword <- function(ctpID)
 {
 	temp <- getPassword(ctpID)
 	return(temp)
 }
 
-lordMT.getSessionID <- function(ctpID)
+iCTP.getSessionID <- function(ctpID)
 {
   temp <- getSessionID(ctpID)
   return(temp)
 }
 
 #TODO
-lordMT.getTradeRecord <- function(ctpID)
+iCTP.getTradeRecord <- function(ctpID)
 {
   temp <- getTradeRecord(ctpID)
   if(cppResult == "")
@@ -508,93 +508,93 @@ lordMT.getTradeRecord <- function(ctpID)
   }
 }
 
-lordMT.getTradeRecords <- function(ctpID)
+iCTP.getTradeRecords <- function(ctpID)
 {
   temp <- getTradeRecords(ctpID)
 }
 
-lordMT.getTradingDate <- function(ctpID)
+iCTP.getTradingDate <- function(ctpID)
 {
   temp <- getTradingDate(ctpID)
   return(temp)
 }
 
-lordMT.getTradingTime <- function(ctpID)
+iCTP.getTradingTime <- function(ctpID)
 {
   temp <- getTradingTime(ctpID)
   return(temp)
 }
 
-lordMT.isClearanced <- function(ctpID)
+iCTP.isClearanced <- function(ctpID)
 {
   temp <- isClearanced(ctpID)
   return(temp)
 }
 
-lordMT.isClearanceTime <- function(ctpID)
+iCTP.isClearanceTime <- function(ctpID)
 {
   temp <- isClearanceTime(ctpID)
   return(temp)
 }
 
-lordMT.isDataOk <- function(ctpID)
+iCTP.isDataOk <- function(ctpID)
 {
   temp <- isDataOk(ctpID)
   return(temp)
 }
 
-lordMT.isMdLogined <- function(ctpID)
+iCTP.isMdLogined <- function(ctpID)
 {
   return(isMdLogined(ctpID))
 }
 
-lordMT.isTdLogined <- function(ctpID)
+iCTP.isTdLogined <- function(ctpID)
 {
   return(isTdLogined(ctpID))
 }
 
-lordMT.isTradingTime <- function(ctpID)
+iCTP.isTradingTime <- function(ctpID)
 {
   return(isTradingTime(ctpID))
 }
 
-lordMT.isTradingTimeExact <- function(ctpID, code)
+iCTP.isTradingTimeExact <- function(ctpID, code)
 {
   return(isTradingTimeExact(ctpID, code))
 }
 
-lordMT.reqCommissionRate <- function(ctpID, code, requestID)
+iCTP.reqCommissionRate <- function(ctpID, code, requestID)
 {
   return(reqCommissionRate(ctpID, code, requestID))
 }
 
-lordMT.reqQrySettlementInfoConfirm <- function(ctpID, requestID)
+iCTP.reqQrySettlementInfoConfirm <- function(ctpID, requestID)
 {
   return(reqQrySettlementInfoConfirm(ctpID, requestID))
 }
 
-lordMT.reqQrySettlementInfo <- function(ctpID, requestID, code)
+iCTP.reqQrySettlementInfo <- function(ctpID, requestID, code)
 {
   return(reqQrySettlementInfo(ctpID, requestID, code))
 }
 
-lordMT.reqMarginRate <- function(ctpID, code, requestID)
+iCTP.reqMarginRate <- function(ctpID, code, requestID)
 {
   return(reqMarginRate(ctpID, code, requestID))
 }
 
 #Start
-lordMT.start <- function(ctpID, ctpRequestID, tradIP, quoteIP, brokerID, userID, userPWd)
+iCTP.start <- function(ctpID, ctpRequestID, tradIP, quoteIP, brokerID, userID, userPWd)
 {
   return(start(ctpID, ctpRequestID, tradIP, quoteIP, brokerID, userID, userPWd))
 }
 
-lordMT.subMarketDatas <- function(ctpID, ctpRequestID, stockID)
+iCTP.subMarketDatas <- function(ctpID, ctpRequestID, stockID)
 {
   return (subMarketDatas(ctpID, ctpRequestID, stockID))
 }
 
-lordMT.unSubMarketDatas <- function(ctpID, requestID, codes)
+iCTP.unSubMarketDatas <- function(ctpID, requestID, codes)
 {
   return(unSubMarketDatas(ctpID, requestID, codes))
 }

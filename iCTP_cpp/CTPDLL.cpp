@@ -98,46 +98,46 @@ void CTPDLL::init(){
 	m_funcUnSubMarketDatas = (funcUnSubMarketDatas)GetProcAddress(hdll, "unSubMarketDatas");
 }
 
-int CTPDLL::askClose(int ctpID, int requestID, char *code, double price, int qty, char timeCondition, char *orderRef){
+int CTPDLL::askClose(int ctpID, int requestID, char *code, char *exchangeID, double price, int qty, char timeCondition, char *orderRef){
 	if(!hdll){
 		init();
 	}
-	return m_funcAskClose(ctpID, requestID, code, price, qty, timeCondition, orderRef);
+	return m_funcAskClose(ctpID, requestID, code, exchangeID, price, qty, timeCondition, orderRef);
 }
 
-int CTPDLL::askCloseToday(int ctpID, int requestID, char *code, double price, int qty, char timeCondition, char *orderRef){
+int CTPDLL::askCloseToday(int ctpID, int requestID, char *code, char *exchangeID, double price, int qty, char timeCondition, char *orderRef){
 	if(!hdll){
 		init();
 	}
-	return m_funcAskCloseToday(ctpID, requestID, code, price, qty, timeCondition, orderRef);
+	return m_funcAskCloseToday(ctpID, requestID, code, exchangeID, price, qty, timeCondition, orderRef);
 }
 
-int CTPDLL::askOpen(int ctpID, int requestID, char *code, double price, int qty, char timeCondition, char *orderRef){
+int CTPDLL::askOpen(int ctpID, int requestID, char *code, char *exchangeID, double price, int qty, char timeCondition, char *orderRef){
 	if(!hdll){
 		init();
 	}
-	return m_funcAskOpen(ctpID, requestID, code, price, qty, timeCondition, orderRef);
+	return m_funcAskOpen(ctpID, requestID, code, exchangeID, price, qty, timeCondition, orderRef);
 }
 
-int CTPDLL::bidClose(int ctpID, int requestID, char* code, double price, int qty, char timeCondition, char* orderRef){
+int CTPDLL::bidClose(int ctpID, int requestID, char* code, char *exchangeID, double price, int qty, char timeCondition, char* orderRef){
 	if(!hdll){
 		init();
 	}
-	return m_funcBidClose(ctpID, requestID, code, price, qty, timeCondition, orderRef);
+	return m_funcBidClose(ctpID, requestID, code, exchangeID, price, qty, timeCondition, orderRef);
 }
 
-int CTPDLL::bidCloseToday(int ctpID, int requestID, char* code, double price, int qty, char timeCondition, char* orderRef){
+int CTPDLL::bidCloseToday(int ctpID, int requestID, char* code, char *exchangeID, double price, int qty, char timeCondition, char* orderRef){
 	if(!hdll){
 		init();
 	}
-	return m_funcBidCloseToday(ctpID, requestID, code, price, qty, timeCondition, orderRef);
+	return m_funcBidCloseToday(ctpID, requestID, code, exchangeID, price, qty, timeCondition, orderRef);
 }
 
-int CTPDLL::bidOpen(int ctpID, int requestID, char *code, double price, int qty, char timeCondition, char *orderRef){
+int CTPDLL::bidOpen(int ctpID, int requestID, char *code, char *exchangeID, double price, int qty, char timeCondition, char *orderRef){
 	if(!hdll){
 		init();
 	}
-	return m_funcBidOpen(ctpID, requestID, code, price, qty, timeCondition, orderRef);
+	return m_funcBidOpen(ctpID, requestID, code, exchangeID, price, qty, timeCondition, orderRef);
 }
 
 int CTPDLL::cancelOrder(int ctpID, int requestID, char *exchangeID, char *orderSysID, char *orderRef){

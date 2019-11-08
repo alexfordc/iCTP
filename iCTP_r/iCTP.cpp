@@ -10,12 +10,12 @@
 using namespace std;
 using namespace Rcpp;
 
-typedef int(*funcAskClose)(int, int, char*, double, int, char, char*);
-typedef int(*funcAskCloseToday)(int, int, char*, double, int, char, char*);
-typedef int(*funcAskOpen)(int, int, char*, double, int, char, char*);
-typedef int(*funcBidClose)(int, int, char*, double, int, char, char*);
-typedef int(*funcBidCloseToday)(int, int, char*, double, int, char, char*);
-typedef int(*funcBidOpen)(int, int, char*, double, int, char, char*);
+typedef int(*funcAskClose)(int, int, char*, char*, double, int, char, char*);
+typedef int(*funcAskCloseToday)(int, int, char*, char*, double, int, char, char*);
+typedef int(*funcAskOpen)(int, int, char*, char*, double, int, char, char*);
+typedef int(*funcBidClose)(int, int, char*, char*, double, int, char, char*);
+typedef int(*funcBidCloseToday)(int, int, char*, char*, double, int, char, char*);
+typedef int(*funcBidOpen)(int, int, char*, char*, double, int, char, char*);
 typedef int(*funcCancelOrder)(int, int, char*, char*, char*);
 typedef int(*funcCreate)(void);
 typedef int(*funcGenerateReqID)(int);
@@ -159,63 +159,63 @@ void Init()
 }
 
 // [[Rcpp::export]]
-int askClose(int ctpID, int requestID, string code, double price, char  qty, char  timeCondition, string  orderRef)
+int askClose(int ctpID, int requestID, string code, string exchangeID, double price, char  qty, char  timeCondition, string  orderRef)
 {
   if(!hdll)
   {
     Init();
   }
-  return m_funcAskClose(ctpID, requestID, (char*)code.c_str(), price, qty, timeCondition, (char*)orderRef.c_str());
+  return m_funcAskClose(ctpID, requestID, (char*)code.c_str(), (char*)exchangeID.c_str(), price, qty, timeCondition, (char*)orderRef.c_str());
 }
 
 // [[Rcpp::export]]
-int askCloseToday(int  ctpID, int  requestID, string code, double  price, char  qty, char  timeCondition, string orderRef)
+int askCloseToday(int  ctpID, int  requestID, string code, string exchangeID, double  price, char  qty, char  timeCondition, string orderRef)
 {
   if(!hdll)
   {
     Init();
   }
-  return m_funcAskCloseToday(ctpID, requestID, (char*)code.c_str(), price, qty, timeCondition, (char*)orderRef.c_str());
+  return m_funcAskCloseToday(ctpID, requestID, (char*)code.c_str(), (char*)exchangeID.c_str(), price, qty, timeCondition, (char*)orderRef.c_str());
 }
 
 // [[Rcpp::export]]
-int  askOpen(int  ctpID, int  requestID, string   code, double  price, char  qty, char  timeCondition, string orderRef)
+int  askOpen(int  ctpID, int  requestID, string   code, string exchangeID, double  price, char  qty, char  timeCondition, string orderRef)
 {
   if(!hdll)
   {
     Init();
   }
-  return m_funcAskOpen(ctpID, requestID, (char*)code.c_str(), price, qty, timeCondition, (char*)orderRef.c_str());
+  return m_funcAskOpen(ctpID, requestID, (char*)code.c_str(), (char*)exchangeID.c_str(), price, qty, timeCondition, (char*)orderRef.c_str());
 }
 
 // [[Rcpp::export]]
-int bidClose(int ctpID, int  requestID, string  code, double  price, char  qty, char  timeCondition, string orderRef)
+int bidClose(int ctpID, int  requestID, string  code, string exchangeID, double  price, char  qty, char  timeCondition, string orderRef)
 {
   if(!hdll)
   {
     Init();
   }
-  return m_funcBidClose(ctpID, requestID, (char*)code.c_str(), price, qty, timeCondition, (char*)orderRef.c_str());
+  return m_funcBidClose(ctpID, requestID, (char*)code.c_str(), (char*)exchangeID.c_str(), price, qty, timeCondition, (char*)orderRef.c_str());
 }
 
 // [[Rcpp::export]]
-int  bidCloseToday(int  ctpID, int  requestID, string  code, double  price, char  qty, char  timeCondition, string  orderRef)
+int  bidCloseToday(int  ctpID, int  requestID, string  code, string exchangeID, double  price, char  qty, char  timeCondition, string  orderRef)
 {
   if(!hdll)
   {
     Init();
   }
-  return m_funcBidCloseToday(ctpID, requestID, (char*)code.c_str(), price, qty, timeCondition, (char*)orderRef.c_str());
+  return m_funcBidCloseToday(ctpID, requestID, (char*)code.c_str(), (char*)exchangeID.c_str(), price, qty, timeCondition, (char*)orderRef.c_str());
 }
 
 // [[Rcpp::export]]
-int bidOpen(int  ctpID, int  requestID,string   code, double  price, char  qty, char  timeCondition,string   orderRef)
+int bidOpen(int  ctpID, int  requestID,string   code, string exchangeID, double  price, char  qty, char  timeCondition,string   orderRef)
 {
   if(!hdll)
   {
     Init();
   }
-  return m_funcBidOpen(ctpID, requestID, (char*)code.c_str(), price, qty, timeCondition, (char*)orderRef.c_str());
+  return m_funcBidOpen(ctpID, requestID, (char*)code.c_str(), (char*)exchangeID.c_str(), price, qty, timeCondition, (char*)orderRef.c_str());
 }
 
 // [[Rcpp::export]]

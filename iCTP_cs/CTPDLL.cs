@@ -15,32 +15,32 @@ namespace FaceCat {
         /// 卖平：多单平仓
         /// </summary>
         [DllImport("iCTP.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int askClose(int ctpID, int requestID, String code, double price, int qty, char timeCondition, String orderRef);
+        public static extern int askClose(int ctpID, int requestID, String code, String exchangeID, double price, int qty, char timeCondition, String orderRef);
         /// <summary>
         /// 卖平今仓：平今天的开仓的空单
         /// </summary>
         [DllImport("iCTP.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int askCloseToday(int ctpID, int requestID, String code, double price, int qty, char timeCondition, String orderRef);
+        public static extern int askCloseToday(int ctpID, int requestID, String code, String exchangeID, double price, int qty, char timeCondition, String orderRef);
         /// <summary>
         /// 卖开：空单开仓
         /// </summary>
         [DllImport("iCTP.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int askOpen(int ctpID, int requestID, String code, double price, int qty, char timeCondition, String orderRef);
+        public static extern int askOpen(int ctpID, int requestID, String code, String exchangeID, double price, int qty, char timeCondition, String orderRef);
         /// <summary>
         /// 买平：空单平仓
         /// </summary>
         [DllImport("iCTP.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int bidClose(int ctpID, int requestID, String code, double price, int qty, char timeCondition, String orderRef);
+        public static extern int bidClose(int ctpID, int requestID, String code, String exchangeID, double price, int qty, char timeCondition, String orderRef);
         /// <summary>
         ///  买平今仓：平今天的开仓的空单
         /// </summary>
         [DllImport("iCTP.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int bidCloseToday(int ctpID, int requestID, String code, double price, int qty, char timeCondition, String orderRef);
+        public static extern int bidCloseToday(int ctpID, int requestID, String code, String exchangeID, double price, int qty, char timeCondition, String orderRef);
         /// <summary>
         /// 买开：多单开仓
         /// </summary>
         [DllImport("iCTP.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int bidOpen(int ctpID, int requestID, String code, double price, int qty, char timeCondition, String orderRef);
+        public static extern int bidOpen(int ctpID, int requestID, String code, String exchangeID, double price, int qty, char timeCondition, String orderRef);
         /// <summary>
         /// 撤单
         /// </summary>

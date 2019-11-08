@@ -30,7 +30,7 @@ public interface FCCTP {
 	 * @param orderRef
 	 * @return
 	 */
-	int askClose(int ctpID, int requestID, String code, double price, char qty, char timeCondition, String orderRef);
+	int askClose(int ctpID, int requestID, String code, String exchangeID, double price, char qty, char timeCondition, String orderRef);
 
 	/**
 	 * 卖平今仓：平今天的开仓的空单
@@ -44,7 +44,7 @@ public interface FCCTP {
 	 * @param orderRef
 	 * @return
 	 */
-	int askCloseToday(int ctpID, int requestID, String code, double price, char qty, char timeCondition,
+	int askCloseToday(int ctpID, int requestID, String code, String exchangeID, double price, char qty, char timeCondition,
 			String orderRef);
 
 	/**
@@ -59,7 +59,7 @@ public interface FCCTP {
 	 * @param orderRef
 	 * @return
 	 */
-	int askOpen(int ctpID, int requestID, String code, double price, char qty, char timeCondition, String orderRef);
+	int askOpen(int ctpID, int requestID, String code, String exchangeID, double price, char qty, char timeCondition, String orderRef);
 
 	/**
 	 * 买平：空单平仓
@@ -73,7 +73,7 @@ public interface FCCTP {
 	 * @param orderRef
 	 * @return
 	 */
-	int bidClose(int ctpID, int requestID, String code, double price, char qty, char timeCondition, String orderRef);
+	int bidClose(int ctpID, int requestID, String code, String exchangeID, double price, char qty, char timeCondition, String orderRef);
 
 	/**
 	 * 买平今仓：平今天的开仓的空单
@@ -87,7 +87,7 @@ public interface FCCTP {
 	 * @param orderRef
 	 * @return
 	 */
-	int bidCloseToday(int ctpID, int requestID, String code, double price, char qty, char timeCondition,
+	int bidCloseToday(int ctpID, int requestID, String code, String exchangeID, double price, char qty, char timeCondition,
 			String orderRef);
 
 	/**
@@ -102,7 +102,7 @@ public interface FCCTP {
 	 * @param orderRef
 	 * @return
 	 */
-	int bidOpen(int ctpID, int requestID, String code, double price, char qty, char timeCondition, String orderRef);
+	int bidOpen(int ctpID, int requestID, String code, String exchangeID, double price, char qty, char timeCondition, String orderRef);
 
 	/**
 	 * 撤单

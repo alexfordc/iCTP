@@ -10,12 +10,12 @@
 #include "stdafx.h"
 using namespace std;
 
-typedef int(*funcAskClose)(int, int, char*, double, int, char, char*);
-typedef int(*funcAskCloseToday)(int, int, char*, double, int, char, char*);
-typedef int(*funcAskOpen)(int, int, char*, double, int, char, char*);
-typedef int(*funcBidClose)(int, int, char*, double, int, char, char*);
-typedef int(*funcBidCloseToday)(int, int, char*, double, int, char, char*);
-typedef int(*funcBidOpen)(int, int, char*, double, int, char, char*);
+typedef int(*funcAskClose)(int, int, char*, char*, double, int, char, char*);
+typedef int(*funcAskCloseToday)(int, int, char*, char*, double, int, char, char*);
+typedef int(*funcAskOpen)(int, int, char*, char*, double, int, char, char*);
+typedef int(*funcBidClose)(int, int, char*, char*, double, int, char, char*);
+typedef int(*funcBidCloseToday)(int, int, char*, char*, double, int, char, char*);
+typedef int(*funcBidOpen)(int, int, char*, char*, double, int, char, char*);
 typedef int(*funcCancelOrder)(int, int, char*, char*, char*);
 typedef int(*funcCreate)(void);
 typedef int(*funcGenerateReqID)(int);
@@ -57,17 +57,17 @@ public:
 	static void init();
 public:
 	//卖平：多单平仓
-	static int askClose(int ctpID, int requestID, char *code, double price, int qty, char timeCondition, char *orderRef);
+	static int askClose(int ctpID, int requestID, char *code, char *exchangeID, double price, int qty, char timeCondition, char *orderRef);
 	//卖平今仓：平今天的开仓的空单
-	static int askCloseToday(int ctpID, int requestID, char *code, double price, int qty, char timeCondition, char *orderRef);
+	static int askCloseToday(int ctpID, int requestID, char *code, char *exchangeID, double price, int qty, char timeCondition, char *orderRef);
 	//卖开：空单开仓
-	static int askOpen(int ctpID, int requestID, char *code, double price, int qty, char timeCondition, char *orderRef);
+	static int askOpen(int ctpID, int requestID, char *code, char *exchangeID, double price, int qty, char timeCondition, char *orderRef);
 	//买平：空单平仓
-	static int bidClose(int ctpID, int requestID, char* code, double price, int qty, char timeCondition, char* orderRef);
+	static int bidClose(int ctpID, int requestID, char* code, char *exchangeID, double price, int qty, char timeCondition, char* orderRef);
 	//买平今仓：平今天的开仓的空单
-	static int bidCloseToday(int ctpID, int requestID, char* code, double price, int qty, char timeCondition, char* orderRef);
+	static int bidCloseToday(int ctpID, int requestID, char* code, char *exchangeID, double price, int qty, char timeCondition, char* orderRef);
 	//买开：多单开仓
-	static int bidOpen(int ctpID, int requestID, char *code, double price, int qty, char timeCondition, char *orderRef);
+	static int bidOpen(int ctpID, int requestID, char *code, char *exchangeID, double price, int qty, char timeCondition, char *orderRef);
 	//撤单
 	static int cancelOrder(int ctpID, int requestID, char *exchangeID, char *orderSysID, char *orderRef);
 	//和交易所建立连接

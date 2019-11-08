@@ -108,16 +108,16 @@ namespace FaceCat {
                             if (isSh) {
                                 //平昨
                                 if (ydPosition > 0) {
-                                    CTPDLL.askClose(m_ctpID, CTPDLL.generateReqID(m_ctpID), investorPosition.m_code, 0, ydPosition, '3', "");
+                                    CTPDLL.askClose(m_ctpID, CTPDLL.generateReqID(m_ctpID), investorPosition.m_code, security.m_exchangeID, 0, ydPosition, '3', "");
                                 }
                                 //平今
                                 if (todayPosition > 0) {
-                                    CTPDLL.askCloseToday(m_ctpID, CTPDLL.generateReqID(m_ctpID), investorPosition.m_code, 0, todayPosition, '3', "");
+                                    CTPDLL.askCloseToday(m_ctpID, CTPDLL.generateReqID(m_ctpID), investorPosition.m_code, security.m_exchangeID, 0, todayPosition, '3', "");
                                 }
                             }
                             //其他交易所处理方法
                             else {
-                                CTPDLL.askClose(m_ctpID, CTPDLL.generateReqID(m_ctpID), investorPosition.m_code, 0, investorPosition.m_position, '3', "");
+                                CTPDLL.askClose(m_ctpID, CTPDLL.generateReqID(m_ctpID), investorPosition.m_code, security.m_exchangeID, 0, investorPosition.m_position, '3', "");
                             }
                             //打印日志
                             if (state == 1) {
@@ -148,16 +148,16 @@ namespace FaceCat {
                             if (isSh) {
                                 //平昨
                                 if (ydPosition > 0) {
-                                    CTPDLL.bidClose(m_ctpID, CTPDLL.generateReqID(m_ctpID), investorPosition.m_code, 0, ydPosition, '3', "");
+                                    CTPDLL.bidClose(m_ctpID, CTPDLL.generateReqID(m_ctpID), investorPosition.m_code, security.m_exchangeID, 0, ydPosition, '3', "");
                                 }
                                 //平今
                                 if (todayPosition > 0) {
-                                    CTPDLL.bidCloseToday(m_ctpID, CTPDLL.generateReqID(m_ctpID), investorPosition.m_code, 0, todayPosition, '3', "");
+                                    CTPDLL.bidCloseToday(m_ctpID, CTPDLL.generateReqID(m_ctpID), investorPosition.m_code, security.m_exchangeID, 0, todayPosition, '3', "");
                                 }
                             }
                             //其他交易所处理方法
                             else {
-                                CTPDLL.bidClose(m_ctpID, CTPDLL.generateReqID(m_ctpID), investorPosition.m_code, 0, investorPosition.m_position, '3', "");
+                                CTPDLL.bidClose(m_ctpID, CTPDLL.generateReqID(m_ctpID), investorPosition.m_code, security.m_exchangeID, 0, investorPosition.m_position, '3', "");
                             }
                             //打印日志
                             if (state == 1) {
@@ -388,8 +388,14 @@ namespace FaceCat {
                         //打印日志
                         FCStrEx.writeLog(String.Format("创近20日新高,均线上翘,买开仓,代码{0},价格{1},数量{2}\r\n",
                             data.m_code, data.m_askPrice1, tradeVol));
+                        Security security = null;
+                        lock (m_securities) {
+                            if (m_securities.ContainsKey(data.m_code)) {
+                                security = m_securities[data.m_code];
+                            }
+                        }
                         //买开仓
-                        CTPDLL.bidOpen(Strategy1.m_ctpID, CTPDLL.generateReqID(Strategy1.m_ctpID), data.m_code, data.m_askPrice1, tradeVol, '3', "");
+                        CTPDLL.bidOpen(Strategy1.m_ctpID, CTPDLL.generateReqID(Strategy1.m_ctpID), data.m_code, security.m_exchangeID, data.m_askPrice1, tradeVol, '3', "");
                         //刷新开仓冷却时间
                         lock (Strategy1.m_cd1) {
                             Strategy1.m_cd1[data.m_code] = 60;
@@ -421,8 +427,14 @@ namespace FaceCat {
                         //打印日志
                         FCStrEx.writeLog(String.Format("创近20日新低,均线下翘,卖开仓,代码{0},价格{1},数量{2}\r\n",
                             data.m_code, data.m_askPrice1, tradeVol));
+                        Security security = null;
+                        lock (m_securities) {
+                            if (m_securities.ContainsKey(data.m_code)) {
+                                security = m_securities[data.m_code];
+                            }
+                        }
                         //卖开仓
-                        CTPDLL.askOpen(Strategy1.m_ctpID, CTPDLL.generateReqID(Strategy1.m_ctpID), data.m_code, data.m_bidPrice1, tradeVol, '3', "");
+                        CTPDLL.askOpen(Strategy1.m_ctpID, CTPDLL.generateReqID(Strategy1.m_ctpID), data.m_code, security.m_exchangeID, data.m_bidPrice1, tradeVol, '3', "");
                         //刷新开仓冷却时间
                         lock (Strategy1.m_cd1) {
                             Strategy1.m_cd1[data.m_code] = 60;

@@ -23,22 +23,22 @@ final class IFCCTP {
 		}
 	}
 
-	protected native int askClose(int ctpID, int requestID, String code, double price, char qty, char timeCondition,
+	protected native int askClose(int ctpID, int requestID, String code, String exchangeID, double price, char qty, char timeCondition,
 			String orderRef);
 
-	protected native int askCloseToday(int ctpID, int requestID, String code, double price, char qty,
+	protected native int askCloseToday(int ctpID, int requestID, String code, String exchangeID, double price, char qty,
 			char timeCondition, String orderRef);
 
-	protected native int askOpen(int ctpID, int requestID, String code, double price, char qty, char timeCondition,
+	protected native int askOpen(int ctpID, int requestID, String code, String exchangeID, double price, char qty, char timeCondition,
 			String orderRef);
 
-	protected native int bidClose(int ctpID, int requestID, String code, double price, char qty, char timeCondition,
+	protected native int bidClose(int ctpID, int requestID, String code, String exchangeID, double price, char qty, char timeCondition,
 			String orderRef);
 
-	protected native int bidCloseToday(int ctpID, int requestID, String code, double price, char qty,
+	protected native int bidCloseToday(int ctpID, int requestID, String code, String exchangeID, double price, char qty,
 			char timeCondition, String orderRef);
 
-	protected native int bidOpen(int ctpID, int requestID, String code, double price, char qty, char timeCondition,
+	protected native int bidOpen(int ctpID, int requestID, String code, String exchangeID, double price, char qty, char timeCondition,
 			String orderRef);
 
 	protected native int cancelOrder(int ctpID, int requestID, String exchangeID, String orderSysID, String orderRef);

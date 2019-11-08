@@ -9,28 +9,28 @@ classdef CTPMTM
     end
     
     methods
-        function[status] = askClose(self, ctpID, requestID, code, price, qty, timeCondition, orderRef)
-            status = str2num(CTPMTMAT(1, ctpID, requestID, code, price, qty, timeCondition, orderRef));
+        function[status] = askClose(self, ctpID, requestID, code, exchangeID, price, qty, timeCondition, orderRef)
+            status = str2num(CTPMTMAT(1, ctpID, requestID, code, exchangeID, price, qty, timeCondition, orderRef));
         end
         
-        function[status] = askCloseToday(self, ctpID, requestID, code, price, qty, timeCondition, orderRef)
-            status = str2num(CTPMTMAT(2, ctpID, requestID, code, price, qty, timeCondition, orderRef));
+        function[status] = askCloseToday(self, ctpID, requestID, code, exchangeID, price, qty, timeCondition, orderRef)
+            status = str2num(CTPMTMAT(2, ctpID, requestID, code, exchangeID, price, qty, timeCondition, orderRef));
         end
         
-        function[status] = askOpen(self, ctpID, requestID, code, price, qty, timeCondition, orderRef)
-            status = str2num(CTPMTMAT(3, ctpID, requestID, code, price, qty, timeCondition, orderRef));
+        function[status] = askOpen(self, ctpID, requestID, code, exchangeID, price, qty, timeCondition, orderRef)
+            status = str2num(CTPMTMAT(3, ctpID, requestID, code, exchangeID, price, qty, timeCondition, orderRef));
         end
         
-        function[status] = bidClose(self, ctpID, requestID, code, price, qty, timeCondition, orderRef)
-            status = str2num(CTPMTMAT(4, ctpID, requestID, code, price, qty, timeCondition, orderRef));
+        function[status] = bidClose(self, ctpID, requestID, code, exchangeID, price, qty, timeCondition, orderRef)
+            status = str2num(CTPMTMAT(4, ctpID, requestID, code, exchangeID, price, qty, timeCondition, orderRef));
         end
         
-        function[status] = bidCloseToday(self, ctpID, requestID, code, price, qty, timeCondition, orderRef)
-            status = str2num(CTPMTMAT(5, ctpID, requestID, code, price, qty, timeCondition, orderRef));
+        function[status] = bidCloseToday(self, ctpID, requestID, code, exchangeID, price, qty, timeCondition, orderRef)
+            status = str2num(CTPMTMAT(5, ctpID, requestID, code, exchangeID, price, qty, timeCondition, orderRef));
         end
         
-        function[status] = bidOpen(self, ctpID, requestID, code, price, qty, timeCondition, orderRef)
-            status = str2num(CTPMTMAT(6, ctpID, requestID, code, price, qty, timeCondition, orderRef));
+        function[status] = bidOpen(self, ctpID, requestID, code, exchangeID, price, qty, timeCondition, orderRef)
+            status = str2num(CTPMTMAT(6, ctpID, requestID, code, exchangeID, price, qty, timeCondition, orderRef));
         end
         
         function[status] = cancelOrder(self, ctpID, requestID, exchangeID, orderSysID, orderRef)

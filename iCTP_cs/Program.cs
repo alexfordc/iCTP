@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using FaceCat;
+using System.Text;
 
 namespace FaceCat {
     static class Program {
@@ -16,7 +17,7 @@ namespace FaceCat {
         /// </summary>
         [STAThread]
         static void Main() {
-            char x = '0';
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             MainForm mainForm = new MainForm();

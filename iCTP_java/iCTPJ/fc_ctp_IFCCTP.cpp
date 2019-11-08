@@ -9,12 +9,12 @@
 
 using namespace std;
 
-typedef int(*funcAskClose)(int, int, char*, double, int, char, char*);
-typedef int(*funcAskCloseToday)(int, int, char*, double, int, char, char*);
-typedef int(*funcAskOpen)(int, int, char*, double, int, char, char*);
-typedef int(*funcBidClose)(int, int, char*, double, int, char, char*);
-typedef int(*funcBidCloseToday)(int, int, char*, double, int, char, char*);
-typedef int(*funcBidOpen)(int, int, char*, double, int, char, char*);
+typedef int(*funcAskClose)(int, int, char*, char*, double, int, char, char*);
+typedef int(*funcAskCloseToday)(int, int, char*, char*, double, int, char, char*);
+typedef int(*funcAskOpen)(int, int, char*, char*, double, int, char, char*);
+typedef int(*funcBidClose)(int, int, char*, char*, double, int, char, char*);
+typedef int(*funcBidCloseToday)(int, int, char*, char*, double, int, char, char*);
+typedef int(*funcBidOpen)(int, int, char*, char*, double, int, char, char*);
 typedef int(*funcCancelOrder)(int, int, char*, char*, char*);
 typedef int(*funcCreate)(void);
 typedef int(*funcGenerateReqID)(int);
@@ -181,7 +181,7 @@ void StringToJstring(jstring dest, JNIEnv* env, const char* pat)
 }
 
 JNIEXPORT jint JNICALL Java_fc_ctp_IFCCTP_askClose
-  (JNIEnv *env, jobject self, jint jctpID, jint jrequestID, jstring jcode, jdouble price, jchar qty, jchar timeCondition, jstring jorderRef)
+  (JNIEnv *env, jobject self, jint jctpID, jint jrequestID, jstring jcode, jstring jExchangeID, jdouble price, jchar qty, jchar timeCondition, jstring jorderRef)
 {
 	if(!hdll)
 	{
@@ -191,13 +191,15 @@ JNIEXPORT jint JNICALL Java_fc_ctp_IFCCTP_askClose
 	int requestID = (int)jrequestID;
 	char code[100] = {0};
 	char orderRef[100] = {0};
+	char exchangeID[100] = {0};
 	JstringToString(code, env, jcode);
 	JstringToString(orderRef, env, jorderRef);
-	return (jint)m_funcAskClose(ctpID, requestID, code, price, qty, timeCondition, orderRef);
+	JstringToString(exchangeID, env, jExchangeID);
+	return (jint)m_funcAskClose(ctpID, requestID, code, exchangeID, price, qty, timeCondition, orderRef);
 }
 
 JNIEXPORT jint JNICALL Java_fc_ctp_IFCCTP_askCloseToday
-  (JNIEnv *env, jobject self, jint jctpID, jint jrequestID, jstring jcode, jdouble price, jchar qty, jchar timeCondition, jstring jorderRef)
+  (JNIEnv *env, jobject self, jint jctpID, jint jrequestID, jstring jcode, jstring jExchangeID, jdouble price, jchar qty, jchar timeCondition, jstring jorderRef)
 {
 	if(!hdll)
 	{
@@ -207,13 +209,15 @@ JNIEXPORT jint JNICALL Java_fc_ctp_IFCCTP_askCloseToday
 	int requestID = (int)jrequestID;
 	char code[100] = {0};
 	char orderRef[100] = {0};
+	char exchangeID[100] = {0};
 	JstringToString(code, env, jcode);
 	JstringToString(orderRef, env, jorderRef);
-	return (jint)m_funcAskCloseToday(ctpID, requestID, code, price, qty, timeCondition, orderRef);
+	JstringToString(exchangeID, env, jExchangeID);
+	return (jint)m_funcAskCloseToday(ctpID, requestID, code, exchangeID, price, qty, timeCondition, orderRef);
 }
 
 JNIEXPORT jint JNICALL Java_fc_ctp_IFCCTP_askOpen
-  (JNIEnv *env, jobject self, jint jctpID, jint jrequestID, jstring jcode, jdouble price, jchar qty, jchar timeCondition, jstring jorderRef)
+  (JNIEnv *env, jobject self, jint jctpID, jint jrequestID, jstring jcode, jstring jExchangeID, jdouble price, jchar qty, jchar timeCondition, jstring jorderRef)
 {
 	if(!hdll)
 	{
@@ -223,13 +227,15 @@ JNIEXPORT jint JNICALL Java_fc_ctp_IFCCTP_askOpen
 	int requestID = (int)jrequestID;
 	char code[100] = {0};
 	char orderRef[100] = {0};
+	char exchangeID[100] = {0};
 	JstringToString(code, env, jcode);
 	JstringToString(orderRef, env, jorderRef);
-	return (jint)m_funcAskOpen(ctpID, requestID, code, price, qty, timeCondition, orderRef);
+	JstringToString(exchangeID, env, jExchangeID);
+	return (jint)m_funcAskOpen(ctpID, requestID, code, exchangeID, price, qty, timeCondition, orderRef);
 }
 
 JNIEXPORT jint JNICALL Java_fc_ctp_IFCCTP_bidClose
-  (JNIEnv *env, jobject self, jint jctpID, jint jrequestID, jstring jcode, jdouble price, jchar qty, jchar timeCondition, jstring jorderRef)
+  (JNIEnv *env, jobject self, jint jctpID, jint jrequestID, jstring jcode, jstring jExchangeID, jdouble price, jchar qty, jchar timeCondition, jstring jorderRef)
 {
 	if(!hdll)
 	{
@@ -239,13 +245,15 @@ JNIEXPORT jint JNICALL Java_fc_ctp_IFCCTP_bidClose
 	int requestID = (int)jrequestID;
 	char code[100] = {0};
 	char orderRef[100] = {0};
+	char exchangeID[100] = {0};
 	JstringToString(code, env, jcode);
 	JstringToString(orderRef, env, jorderRef);
-	return (jint)m_funcBidClose(ctpID, requestID, code, price, qty, timeCondition, orderRef);
+	JstringToString(exchangeID, env, jExchangeID);
+	return (jint)m_funcBidClose(ctpID, requestID, code, exchangeID, price, qty, timeCondition, orderRef);
 }
 
 JNIEXPORT jint JNICALL Java_fc_ctp_IFCCTP_bidCloseToday
-  (JNIEnv *env, jobject self, jint jctpID, jint jrequestID, jstring jcode, jdouble price, jchar qty, jchar timeCondition, jstring jorderRef)
+  (JNIEnv *env, jobject self, jint jctpID, jint jrequestID, jstring jcode, jstring jExchangeID, jdouble price, jchar qty, jchar timeCondition, jstring jorderRef)
 {
 	if(!hdll)
 	{
@@ -255,13 +263,15 @@ JNIEXPORT jint JNICALL Java_fc_ctp_IFCCTP_bidCloseToday
 	int requestID = (int)jrequestID;
 	char code[100] = {0};
 	char orderRef[100] = {0};
+	char exchangeID[100] = {0};
 	JstringToString(code, env, jcode);
 	JstringToString(orderRef, env, jorderRef);
-	return (jint)m_funcBidCloseToday(ctpID, requestID, code, price, qty, timeCondition, orderRef);
+	JstringToString(exchangeID, env, jExchangeID);
+	return (jint)m_funcBidCloseToday(ctpID, requestID, code, exchangeID, price, qty, timeCondition, orderRef);
 }
 
 JNIEXPORT jint JNICALL Java_fc_ctp_IFCCTP_bidOpen
-  (JNIEnv *env, jobject self, jint jctpID, jint jrequestID, jstring jcode, jdouble price, jchar qty, jchar timeCondition, jstring jorderRef)
+  (JNIEnv *env, jobject self, jint jctpID, jint jrequestID, jstring jcode, jstring jExchangeID, jdouble price, jchar qty, jchar timeCondition, jstring jorderRef)
 {
 	if(!hdll)
 	{
@@ -271,9 +281,11 @@ JNIEXPORT jint JNICALL Java_fc_ctp_IFCCTP_bidOpen
 	int requestID = (int)jrequestID;
 	char code[100] = {0};
 	char orderRef[100] = {0};
+	char exchangeID[100] = {0};
 	JstringToString(code, env, jcode);
 	JstringToString(orderRef, env, jorderRef);
-	return (jint)m_funcBidOpen(ctpID, requestID, code, price, qty, timeCondition, orderRef);
+	JstringToString(exchangeID, env, jExchangeID);
+	return (jint)m_funcBidOpen(ctpID, requestID, code, exchangeID, price, qty, timeCondition, orderRef);
 }
 
 JNIEXPORT jint JNICALL Java_fc_ctp_IFCCTP_cancelOrder
@@ -780,7 +792,9 @@ JNIEXPORT jint JNICALL Java_fc_ctp_IFCCTP_reqQrySettlementInfo
     int requestID = (int)jrequestID;
 	char code[100] = {0};
 	JstringToString(code, env, jtradingDate);
-	return (jint)m_funcReqQrySettlementInfo(ctpID, requestID, jtradingDate);
+	char tradingDate[100] = {0};
+	JstringToString(tradingDate, env, jtradingDate);
+	return (jint)m_funcReqQrySettlementInfo(ctpID, requestID, tradingDate);
 }
 
 JNIEXPORT jint JNICALL Java_fc_ctp_IFCCTP_start

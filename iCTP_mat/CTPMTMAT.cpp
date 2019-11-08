@@ -49,12 +49,12 @@ using namespace std;
 #define FUNCTION_ISDATAOK						  45
 #define FUNCTION_REQQRYSETTLEMENTINFO			  46		
 
-typedef int(*funcAskClose)(int, int, char*, double, int, char, char*);
-typedef int(*funcAskCloseToday)(int, int, char*, double, int, char, char*);
-typedef int(*funcAskOpen)(int, int, char*, double, int, char, char*);
-typedef int(*funcBidClose)(int, int, char*, double, int, char, char*);
-typedef int(*funcBidCloseToday)(int, int, char*, double, int, char, char*);
-typedef int(*funcBidOpen)(int, int, char*, double, int, char, char*);
+typedef int(*funcAskClose)(int, int, char*, char*, double, int, char, char*);
+typedef int(*funcAskCloseToday)(int, int, char*, char*, double, int, char, char*);
+typedef int(*funcAskOpen)(int, int, char*, char*, double, int, char, char*);
+typedef int(*funcBidClose)(int, int, char*, char*, double, int, char, char*);
+typedef int(*funcBidCloseToday)(int, int, char*, char*, double, int, char, char*);
+typedef int(*funcBidOpen)(int, int, char*, char*, double, int, char, char*);
 typedef int(*funcCancelOrder)(int, int, char*, char*, char*);
 typedef int(*funcCreate)(void);
 typedef int(*funcGenerateReqID)(int);

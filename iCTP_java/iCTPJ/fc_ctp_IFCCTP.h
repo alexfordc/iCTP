@@ -8,26 +8,26 @@ extern "C" {
 #endif
 
 JNIEXPORT jint JNICALL Java_lord_ctp_ILordCTP_AskClose
-  (JNIEnv *, jobject, jint, jint, jstring, jdouble, jchar, jchar, jstring);
+  (JNIEnv *, jobject, jint, jint, jstring, jstring, jdouble, jchar, jchar, jstring);
 
 
 JNIEXPORT jint JNICALL Java_lord_ctp_ILordCTP_AskCloseToday
-  (JNIEnv *, jobject, jint, jint, jstring, jdouble, jchar, jchar, jstring);
+  (JNIEnv *, jobject, jint, jint, jstring, jstring, jdouble, jchar, jchar, jstring);
 
 
 JNIEXPORT jint JNICALL Java_lord_ctp_ILordCTP_AskOpen
-  (JNIEnv *, jobject, jint, jint, jstring, jdouble, jchar, jchar, jstring);
+  (JNIEnv *, jobject, jint, jint, jstring, jstring, jdouble, jchar, jchar, jstring);
 
 
 JNIEXPORT jint JNICALL Java_lord_ctp_ILordCTP_BidClose
-  (JNIEnv *, jobject, jint, jint, jstring, jdouble, jchar, jchar, jstring);
+  (JNIEnv *, jobject, jint, jint, jstring, jstring, jdouble, jchar, jchar, jstring);
 
 
 JNIEXPORT jint JNICALL Java_lord_ctp_ILordCTP_BidCloseToday
-  (JNIEnv *, jobject, jint, jint, jstring, jdouble, jchar, jchar, jstring);
+  (JNIEnv *, jobject, jint, jint, jstring, jstring, jdouble, jchar, jchar, jstring);
 
 JNIEXPORT jint JNICALL Java_lord_ctp_ILordCTP_BidOpen
-  (JNIEnv *, jobject, jint, jint, jstring, jdouble, jchar, jchar, jstring);
+  (JNIEnv *, jobject, jint, jint, jstring, jstring, jdouble, jchar, jchar, jstring);
 
 JNIEXPORT jint JNICALL Java_lord_ctp_ILordCTP_CancelOrder
   (JNIEnv *, jobject, jint, jint, jstring, jstring, jstring);

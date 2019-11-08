@@ -27,34 +27,34 @@ public class FCCTPIMPL implements FCCTP {
 		}
 	}
 
-	public int askClose(int ctpID, int requestID, String code, double price, char qty, char timeCondition,
+	public int askClose(int ctpID, int requestID, String code, String exchangeID, double price, char qty, char timeCondition,
 			String orderRef) {
-		return m_ctpBridge.askClose(ctpID, requestID, code, price, qty, timeCondition, orderRef);
+		return m_ctpBridge.askClose(ctpID, requestID, code, exchangeID, price, qty, timeCondition, orderRef);
 	}
 
-	public int askCloseToday(int ctpID, int requestID, String code, double price, char qty, char timeCondition,
+	public int askCloseToday(int ctpID, int requestID, String code, String exchangeID, double price, char qty, char timeCondition,
 			String orderRef) {
-		return m_ctpBridge.askCloseToday(ctpID, requestID, code, price, qty, timeCondition, orderRef);
+		return m_ctpBridge.askCloseToday(ctpID, requestID, code, exchangeID, price, qty, timeCondition, orderRef);
 	}
 
-	public int askOpen(int ctpID, int requestID, String code, double price, char qty, char timeCondition,
+	public int askOpen(int ctpID, int requestID, String code, String exchangeID, double price, char qty, char timeCondition,
 			String orderRef) {
-		return m_ctpBridge.askOpen(ctpID, requestID, code, price, qty, timeCondition, orderRef);
+		return m_ctpBridge.askOpen(ctpID, requestID, code, exchangeID, price, qty, timeCondition, orderRef);
 	}
 
-	public int bidClose(int ctpID, int requestID, String code, double price, char qty, char timeCondition,
+	public int bidClose(int ctpID, int requestID, String code, String exchangeID, double price, char qty, char timeCondition,
 			String orderRef) {
-		return m_ctpBridge.bidClose(ctpID, requestID, code, price, qty, timeCondition, orderRef);
+		return m_ctpBridge.bidClose(ctpID, requestID, code, exchangeID, price, qty, timeCondition, orderRef);
 	}
 
-	public int bidCloseToday(int ctpID, int requestID, String code, double price, char qty, char timeCondition,
+	public int bidCloseToday(int ctpID, int requestID, String code, String exchangeID, double price, char qty, char timeCondition,
 			String orderRef) {
-		return m_ctpBridge.bidCloseToday(ctpID, requestID, code, price, qty, timeCondition, orderRef);
+		return m_ctpBridge.bidCloseToday(ctpID, requestID, code, exchangeID, price, qty, timeCondition, orderRef);
 	}
 
-	public int bidOpen(int ctpID, int requestID, String code, double price, char qty, char timeCondition,
+	public int bidOpen(int ctpID, int requestID, String code, String exchangeID, double price, char qty, char timeCondition,
 			String orderRef) {
-		return m_ctpBridge.bidOpen(ctpID, requestID, code, price, qty, timeCondition, orderRef);
+		return m_ctpBridge.bidOpen(ctpID, requestID, code, exchangeID, price, qty, timeCondition, orderRef);
 	}
 
 	public int cancelOrder(int ctpID, int requestID, String exchangeID, String orderSysID, String orderRef) {
